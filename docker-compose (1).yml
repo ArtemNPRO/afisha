@@ -1,0 +1,14 @@
+services:
+  bot:
+    build: .
+    restart: unless-stopped
+    environment:
+      TELEGRAM_BOT_TOKEN: "${TELEGRAM_BOT_TOKEN:?TELEGRAM_BOT_TOKEN is required}"
+      REMINDER_INTERVAL_SECONDS: "${REMINDER_INTERVAL_SECONDS:-1800}"
+    ports:
+      - "8000:8000"
+    volumes:
+      - data:/data
+
+volumes:
+  data:
