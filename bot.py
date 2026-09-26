@@ -189,9 +189,9 @@ async def on_callback(update: Update, ctx: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 def build_app() -> Application:
-    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    token = os.environ.get("TG_BOT")
     if not token:
-        raise RuntimeError("TELEGRAM_BOT_TOKEN is not set")
+        raise RuntimeError("TG_BOT is not set")
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("events", events_cmd))
