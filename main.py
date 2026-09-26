@@ -22,7 +22,7 @@ REMINDER_INTERVAL = int(os.environ.get("REMINDER_INTERVAL_SECONDS", 30 * 60))
 
 def _make_bot():
     """Возвращает telegram.Bot, если настроен токен, иначе None."""
-    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    token = os.environ.get("TG_BOT")
     if not token:
         return None
     from telegram import Bot
@@ -30,7 +30,7 @@ def _make_bot():
 
 
 async def _bot_task() -> None:
-    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    token = os.environ.get("TG_BOT")
     if not token:
         logger.info("TELEGRAM_BOT_TOKEN not set — bot disabled")
         return
